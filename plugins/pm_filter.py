@@ -56,7 +56,7 @@ async def fil_mod(client, message):
       else:
           await m.edit("USE :- /autofilter on 𝙾𝚁 /autofilter off")
             
-@Client.on_message(filters.group & filters.text & filters.incoming)
+@Client.on_message(filters.text & filters.incoming)
 async def give_filter(client, message):
     """
     chat_type = message.chat.type
