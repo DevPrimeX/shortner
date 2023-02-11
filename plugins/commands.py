@@ -1,4 +1,4 @@
-#For Paid Edits, Contact @Akash5213 on telegram.
+#For Paid Edits, Contact @Owner_contact_rebot on telegram.
 import os
 import logging
 import random
@@ -29,7 +29,7 @@ async def start(client, message):
                 InlineKeyboardButton('𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐆𝐫𝐨𝐮𝐩', url='http://t.me/{temp.U_NAME}?startgroup=true')
             ],
             [
-                InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url=f"https://t.me/joinnowearn"),
+                InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url=f"https://t.me/ipapcornsupport"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -48,7 +48,7 @@ async def start(client, message):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Trickyakash5213')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/tlgdirectmovies_bot_updates')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -94,7 +94,7 @@ async def start(client, message):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Trickyakash5213')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/tlgdirectmovies_bot_updates')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -586,7 +586,7 @@ async def shortlink(bot, message):
                     if not admin.user.is_bot:
                         await bot.send_message(
                             chat_id=admin.user.id,
-                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
+                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
                             disable_web_page_preview=True
                         )
                     else:
@@ -600,7 +600,7 @@ async def shortlink(bot, message):
     else:
         plan = 'Not Active'
     if exp_date == 'Not Active' or plan == 'Not Active':
-        return await message.reply_text(f"<b>Hey {message.from_user.mention}, This bot is free to use you need to take access before connecting your shortlink . For life time free access send msg to admin @Akash5213!</b>")
+        return await message.reply_text(f"<b>Hey {message.from_user.mention}, This bot is free to use you need to take access before connecting your shortlink . For life time free access send msg to admin @Owner_contact_rebot!</b>")
     data = message.text
     userid = message.from_user.id
     user = await bot.get_chat_member(grp_id, userid)
@@ -642,7 +642,7 @@ async def plans(bot, message):
                     if not admin.user.is_bot:
                         await bot.send_message(
                             chat_id=admin.user.id,
-                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
+                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
                             disable_web_page_preview=True
                         )
                     else:
@@ -696,15 +696,15 @@ async def showplan(bot, message):
         exp_date = settings.get('exp_date')
     else:
         exp_date = 'Not Active'
-    await message.reply_text(f"<b>Your Active Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code>\n\nFor Upgrading your plan, Contact @Akash5213</b>")
+    await message.reply_text(f"<b>Your Active Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code>\n\nFor Upgrading your plan, Contact @Owner_contact_rebot</b>")
 
 @Client.on_message(filters.command("plans"))
 async def plans_available(bot, message):
     btn = [[
-        InlineKeyboardButton("Contact Admin", url="t.me/Akash5213")
+        InlineKeyboardButton("Contact Admin", url="t.me/Owner_contact_rebot")
     ]]
     PLANS = """
-    <b>For plan details, Contact @Akash5213 !
+    <b>For plan details, Contact @Owner_contact_rebot !
     
     All plans available at lower rates !
     
