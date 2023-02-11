@@ -85,7 +85,7 @@ if SELF_DELETE == "True":
 
     # Download Tutorial Button #
 DOWNLOAD_TEXT_NAME = "📥 HOW TO DOWNLOAD 📥"
-DOWNLOAD_TEXT_URL = "https://shrdsk.me/video/C9VIV2"
+DOWNLOAD_TEXT_URL = "https://t.me/How_To_open_short/41"
 
    # Custom Caption Under Button #
 CAPTION_BUTTON = "JOIN MY CHANNEL"
