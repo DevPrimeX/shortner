@@ -1020,7 +1020,7 @@ async def auto_filter(client, msg, spoll=False):
         )
             
     btn.insert(0, [
-        InlineKeyboardButton("🏏 𝘼𝙡𝙡 𝙇𝙞𝙫𝙚 𝙎𝙥𝙤𝙧𝙩𝙨 𝙁𝙧𝙚𝙚 𝘾𝙡𝙞𝙘𝙠 𝙃𝙚𝙧𝙚 😍", url="https://urlsopen.net/kuDJ")
+        InlineKeyboardButton("𝘼𝙡𝙡 𝙉𝙚𝙬 𝙈𝙤𝙫𝙞𝙚𝙨 𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙃𝙚𝙧𝙚", url="https://t.me/Film_Update_Official")
     ])
 
     if offset != "":
