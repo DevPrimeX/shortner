@@ -20,7 +20,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', "5580813031:AAHYWtOolpicSuIA2SStgvTWGcdYvcL
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
-USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', False))
+USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 PICS = (environ.get('PICS', 'https://graph.org/file/409d8640f064786191655.jpg https://graph.org/file/a8f174a7d33182c55e243.jpg https://graph.org/file/a81e97f2aeecb1dd48761.jpg')).split()
 
 # Admins, Channels & Users
