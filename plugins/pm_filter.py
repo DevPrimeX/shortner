@@ -906,7 +906,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
         message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
-    srh_msg = await message.reply_text("<b>Lᴏᴀᴅɪɴɢ Yᴏᴜʀ Rᴇsᴜʟᴛs...🔎</b>")
+    srh_msg = await message.reply_text("<b>𝙎𝙀𝘼𝙍𝘾𝙃𝙄𝙉𝙂...🔎</b>")
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
     settings = await db.get_settings(message.chat.id)
@@ -1099,7 +1099,7 @@ async def auto_filter(client, msg, spoll=False):
         await srh_msg.delete()
 
 async def advantage_spell_chok(msg):
-    srh_msg = await msg.reply_text("<b>Lᴏᴀᴅɪɴɢ Yᴏᴜʀ Rᴇsᴜʟᴛs...🔎</b>")
+    srh_msg = await msg.reply_text("<b>𝙎𝙀𝘼𝙍𝘾𝙃𝙄𝙉𝙂...🔎</b>")
     mv_id = msg.id
     mv_rqst = msg.text
     reqstr1 = msg.from_user.id if msg.from_user else 0
