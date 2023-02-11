@@ -211,7 +211,7 @@ async def next_page(bot, query):
             ],
         )
     btn.insert(0, [
-        InlineKeyboardButton("🏏 𝘼𝙡𝙡 𝙇𝙞𝙫𝙚 𝙎𝙥𝙤𝙧𝙩𝙨 𝙁𝙧𝙚𝙚 𝘾𝙡𝙞𝙘𝙠 𝙃𝙚𝙧𝙚 😍", url="https://urlsopen.net/kuDJ")
+        InlineKeyboardButton("𝘼𝙡𝙡 𝙉𝙚𝙬 𝙈𝙤𝙫𝙞𝙚𝙨 𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙃𝙚𝙧𝙚", url="https://t.me/Film_Update_Official")
     ])
     try:
         await query.edit_message_reply_markup(
@@ -656,7 +656,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Trickyakash5213')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Film_Update_Official')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -932,7 +932,7 @@ async def auto_filter(client, msg, spoll=False):
                 if not admin.user.is_bot:
                     await client.send_message(
                         chat_id=admin.user.id,
-                        text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
+                        text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
                         disable_web_page_preview=True
                     )
                 else:
@@ -947,7 +947,7 @@ async def auto_filter(client, msg, spoll=False):
             if not admin.user.is_bot:
                 await client.send_message(
                     chat_id=admin.user.id,
-                    text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
+                    text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
                     disable_web_page_preview=True
                 )
             else:
