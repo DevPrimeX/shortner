@@ -211,7 +211,7 @@ async def next_page(bot, query):
             ],
         )
     btn.insert(0, [
-        InlineKeyboardButton("𝘼𝙡𝙡 𝙉𝙚𝙬 𝙈𝙤𝙫𝙞𝙚𝙨 𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙃𝙚𝙧𝙚", url="https://t.me/Film_Update_Official")
+        InlineKeyboardButton("🅷︎🅾︎🆆︎ 🆃︎🅾︎ 🅾︎🅿︎🅴︎🅽︎ 🅻︎🅸︎🅽︎🅺︎", url="https://t.me/Film_Update_Official")
     ])
     try:
         await query.edit_message_reply_markup(
@@ -1020,7 +1020,7 @@ async def auto_filter(client, msg, spoll=False):
         )
             
     btn.insert(0, [
-        InlineKeyboardButton("𝘼𝙡𝙡 𝙉𝙚𝙬 𝙈𝙤𝙫𝙞𝙚𝙨 𝙐𝙥𝙙𝙖𝙩𝙚𝙨 𝙃𝙚𝙧𝙚", url="https://t.me/Film_Update_Official")
+        InlineKeyboardButton("🅷︎🅾︎🆆︎ 🆃︎🅾︎ 🅾︎🅿︎🅴︎🅽︎ 🅻︎🅸︎🅽︎🅺︎", url="https://t.me/Film_Update_Official")
     ])
 
     if offset != "":
