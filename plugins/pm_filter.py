@@ -25,6 +25,10 @@ from database.filters_mdb import (
     find_filter,
     get_filters,
 )
+
+import os
+req_channel = int(os.environ.get('REQ_CHANNEL', ''))
+
 import logging
 
 logger = logging.getLogger(__name__)
@@ -79,7 +83,7 @@ async def give_filter(client, message):
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("oKda", show_alert=True)
+        return await query.answer("Տᗴᗩᖇᑕᕼ YOᑌᖇ Տᗴᒪᖴ", show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -445,6 +449,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
+            await client.send_message(req_channel,f"-🦋 #REQUESTED_CONTENT 🦋-\n\n📝Content Name :{search}\nRequested By: {message.from_user.first_name}\n USER ID:{message.from_user.id}\n\n🗃",
+                                                                                                       reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔺 Mark as Done 🔺", callback_data="close_data")]]))
             return await query.answer('No such file exist.')
         files = files_[0]
         title = files.file_name
