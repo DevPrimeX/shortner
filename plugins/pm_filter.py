@@ -27,7 +27,7 @@ from database.filters_mdb import (
 )
 
 import os
-req_channel = int(os.environ.get('REQ_CHANNEL', ''))
+req_channel = int(os.environ.get('REQ_CHANNEL', '-1001683642795'))
 
 import logging
 
@@ -451,6 +451,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not files_:
             await client.send_message(req_channel,f"-🦋 #REQUESTED_CONTENT 🦋-\n\n📝Content Name :{search}\nRequested By: {message.from_user.first_name}\n USER ID:{message.from_user.id}\n\n🗃",
                                                                                                        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔺 Mark as Done 🔺", callback_data="close_data")]]))
+            await message.reply_text(text=f"△ 𝙷𝚎𝚢 𝚜𝚘𝚗𝚊 {message.from_user.first_name} 😎,\n\nʏᴏᴜʀ ʀᴇQᴜᴇꜱᴛ ʜᴀꜱ ʙᴇᴇɴ ꜱᴇɴᴛ ᴛᴏ ᴏᴜʀ ᴀᴅᴍɪɴ'ꜱ ᴅᴀꜱʜʙᴏᴀʀᴅ !\nᴘʟᴇᴀꜱᴇ ᴋᴇᴇᴘ ꜱᴏᴍᴇ ᴘᴀᴛɪᴇɴᴄᴇ !\nᴛʜᴇʏ ᴡɪʟʟ ᴜᴘʟᴏᴀᴅ ɪᴛ ᴀꜱ ꜱᴏᴏɴ ᴀꜱ ᴘᴏꜱꜱɪʙʟᴇ.\n\n➟ 📝𝘾𝙤𝙣𝙩𝙚𝙣𝙩 𝙣𝙖𝙢𝙚 : {search}\n➟ 👮𝙍𝙚𝙦𝙪𝙚𝙨𝙩𝙚𝙙 𝘽𝙮 : {message.from_user.first_name}\n\n༺ @Owner_contact_rebot ༻\n\n🦋・‥☆𝘼𝘿𝙈𝙞𝙉 𝙨𝙪𝙥𝙥𝙤𝙧𝙩☆‥・🦋\n╰┈➤・☆ @Owner_contact_rebot\n╰┈➤・☆ @Owner_contact_rebot",
+                                                                                                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("━ • │▌║  ᗩᗪᗪ ʍɛ 2 ᑌᖇ Ǥᖇᗝᑌᑭ  ║▌│ • ━", url=f'http://t.me/{temp.U_NAME}?startgroup=true')],[InlineKeyboardButton("✪ Dev ✪", url="https://t.me/tlgdirectmovies_bot_updates"),   InlineKeyboardButton("✪ Main Ch- ✪", url="https://t.me/Film_Update_Official")],[InlineKeyboardButton("╚»♥️Thank u For Using™♥️«╝", callback_data="close_data")]]))
             return await query.answer('No such file exist.')
         files = files_[0]
         title = files.file_name
