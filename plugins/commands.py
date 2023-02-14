@@ -84,7 +84,7 @@ async def start(client, message):
                 btn.append([InlineKeyboardButton(" 🔄 Try Again", url=f"https://t.me/{temp.U_NAME}?start={message.command[1]}")])
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**𝑱𝒐𝒊𝒏 𝑶𝒖𝒓 𝑴𝒐𝒗𝒊𝒆 𝑼𝒑𝒅𝒂𝒕𝒆𝒔 𝑪𝒉𝒂𝒏𝒏𝒆𝒍 𝑻𝒐 𝑼𝒔𝒆 𝑻𝒉𝒊𝒔 𝑩𝒐𝒕!**",
+            text="**𝙁𝙞𝙧𝙨𝙩, 𝙅𝙤𝙞𝙣 𝙊𝙪𝙧 𝙐𝙥𝙙𝙖𝙩𝙚 𝘾𝙝𝙖𝙣𝙣𝙚𝙡 𝙩𝙝𝙚𝙣 𝘾𝙡𝙞𝙘𝙠 𝙤𝙣 𝙏𝙧𝙮 𝙖𝙜𝙖𝙞𝙣 𝙛𝙤𝙧 𝙮𝙤𝙪 𝙙𝙚𝙨𝙞𝙧𝙚𝙙 𝙢𝙤𝙫𝙞𝙚/𝙬𝙚𝙗𝙨𝙚𝙧𝙞𝙚𝙨 ♥️**",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode=enums.ParseMode.MARKDOWN
             )
@@ -399,7 +399,7 @@ async def delete_all_index_confirm(bot, message):
     await message.message.edit('Succesfully Deleted All The Indexed Files.')
 
 
-@Client.on_message(filters.command('settings') & filters.user(ADMINS))
+@Client.on_message(filters.command('settings'))
 async def settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
