@@ -211,7 +211,7 @@ async def next_page(bot, query):
             ],
         )
     btn.insert(0, [
-        InlineKeyboardButton("🏏 𝘼𝙡𝙡 𝙇𝙞𝙫𝙚 𝙎𝙥𝙤𝙧𝙩𝙨 𝙁𝙧𝙚𝙚 𝘾𝙡𝙞𝙘𝙠 𝙃𝙚𝙧𝙚 😍", url="https://urlsopen.net/kuDJ")
+        InlineKeyboardButton("𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠", url="https://t.me/Film_Update_Official/257")
     ])
     try:
         await query.edit_message_reply_markup(
@@ -1022,7 +1022,7 @@ async def auto_filter(client, msg, spoll=False):
         )
             
     btn.insert(0, [
-        InlineKeyboardButton("🏏 𝘼𝙡𝙡 𝙇𝙞𝙫𝙚 𝙎𝙥𝙤𝙧𝙩𝙨 𝙁𝙧𝙚𝙚 𝘾𝙡𝙞𝙘𝙠 𝙃𝙚𝙧𝙚 😍", url="https://urlsopen.net/kuDJ")
+        InlineKeyboardButton("𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠", url="https://t.me/Film_Update_Official/257")
     ])
 
     if offset != "":
