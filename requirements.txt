@@ -8,7 +8,6 @@ requests
 bs4 
 git+https://github.com/Joelkb/Cinemagoer
 python-dotenv
-aiohttp
 datetime
 pytz
 python-dateutil
