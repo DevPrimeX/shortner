@@ -29,7 +29,7 @@ async def start(client, message):
                 InlineKeyboardButton('𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐆𝐫𝐨𝐮𝐩', url='http://t.me/{temp.U_NAME}?startgroup=true')
             ],
             [
-                InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url=f"https://t.me/ipapcornsupport"),
+                InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url=f"https://t.me/VJ_Bot_Disscussion"),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -48,7 +48,7 @@ async def start(client, message):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/tlgdirectmovies_bot_updates')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/VJ_Bots')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -94,7 +94,7 @@ async def start(client, message):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/tlgdirectmovies_bot_updates')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/VJ_Bots')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -701,10 +701,10 @@ async def showplan(bot, message):
 @Client.on_message(filters.command("plans"))
 async def plans_available(bot, message):
     btn = [[
-        InlineKeyboardButton("Contact Admin", url="t.me/Owner_contact_rebot")
+        InlineKeyboardButton("Contact Admin", url="t.me/Anjel_neha")
     ]]
     PLANS = """
-    <b>For plan details, Contact @Owner_contact_rebot !
+    <b>For plan details, Contact @Anjel_neha !
     
     All plans available at lower rates !
     
