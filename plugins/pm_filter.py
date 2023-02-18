@@ -211,7 +211,7 @@ async def next_page(bot, query):
             ],
         )
     btn.insert(0, [
-        InlineKeyboardButton("🌹𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠🌹", url="https://t.me/Film_Update_Official/257")
+        InlineKeyboardButton("🌹𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠🌹", url="https://t.me/How_To_Open_Linkl")
     ])
     try:
         await query.edit_message_reply_markup(
@@ -282,7 +282,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             title = query.message.chat.title
 
         else:
-            return await query.answer('@OkFilterBot Is Best')
+            return await query.answer('@yoursearchvjBot Is Best')
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
@@ -656,7 +656,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('➕ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘs➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/Trickyakash5213')
+            InlineKeyboardButton('🤖ᴜᴘᴅᴀᴛᴇs', url='https://t.me/VJ_Bots')
         ], [
             InlineKeyboardButton('ℹ️ʜᴇʟᴘ', callback_data='help'),
             InlineKeyboardButton('🔰ᴀʙᴏᴜᴛ', callback_data='about')
@@ -1022,7 +1022,7 @@ async def auto_filter(client, msg, spoll=False):
         )
             
     btn.insert(0, [
-        InlineKeyboardButton("🌹𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠🌹", url="https://t.me/Film_Update_Official/257")
+        InlineKeyboardButton("🌹𝙃𝙤𝙬 𝙏𝙤 𝙊𝙥𝙚𝙣 𝙇𝙞𝙣𝙠🌹", url="https://t.me/How_To_Open_Linkl")
     ])
 
     if offset != "":
