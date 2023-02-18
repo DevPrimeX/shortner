@@ -642,7 +642,7 @@ async def plans(bot, message):
                     if not admin.user.is_bot:
                         await bot.send_message(
                             chat_id=admin.user.id,
-                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
+                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Anjel_neha</b>",
                             disable_web_page_preview=True
                         )
                     else:
