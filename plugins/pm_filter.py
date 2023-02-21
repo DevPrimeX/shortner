@@ -892,22 +892,14 @@ async def auto_filter(client, msg, spoll=False):
     else:
         message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
-    srh_msg = await message.reply_text("<b>Lᴏᴀᴅɪɴɢ Yᴏᴜʀ Rᴇsᴜʟᴛs...🔎</b>")
-    tz = pytz.timezone('Asia/Kolkata')
-    today = date.today()
-    
-        async for admin in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-            if not admin.user.is_bot:
-                await client.send_message(
-                    chat_id=admin.user.id,
-                    text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
-                    disable_web_page_preview=True
-                )
-            else:
-                pass
-        plan_active = False
+    settings = await get_settings(message.chat.id)
+    if 'is_shortlink' in settings.keys():
+        ENABLE_SHORTLINK = settings['is_shortlink']
+    else:
+        await save_group_settings(message.chat.id, 'is_shortlink', False)
+        ENABLE_SHORTLINK = False
     pre = 'filep' if settings['file_secure'] else 'file'
-    if plan_active == True:
+    if ENABLE_SHORTLINK == True:
         if settings["button"]:
             btn = [
                 [
