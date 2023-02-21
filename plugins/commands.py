@@ -556,164 +556,29 @@ async def save_template(client, message):
     await save_group_settings(grp_id, 'template', template)
     await sts.edit(f"𝚂𝚄𝙲𝙲𝙴𝚂𝚂𝙵𝚄𝙻𝙻𝚈 𝚄𝙿𝙶𝚁𝙰𝙳𝙴𝙳 𝚈𝙾𝚄𝚁 𝚃𝙴𝙼𝙿𝙻𝙰𝚃𝙴 𝙵𝙾𝚁 {title} to\n\n{template}")
 
-@Client.on_message(filters.command('shortlink'))
+@Client.on_message(filters.command("shortlink") & filters.user(ADMINS))
 async def shortlink(bot, message):
     chat_type = message.chat.type
     if chat_type == enums.ChatType.PRIVATE:
-        return await message.reply_text("<b>You can't use this command in my private chat :(\n\nKindly use this command on groups !</b>")
+        return await message.reply_text(f"<b>Hey {message.from_user.mention}, This command only works on groups !</b>")
     elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
-        grp_id = message.chat.id
+        grpid = message.chat.id
         title = message.chat.title
     else:
         return
-    settings = await get_settings(grp_id)
-    today = date.today()
-    if 'sub_date' in settings.keys():
-        sub_date = settings['sub_date']
-    else:
-        sub_date = 'Not Active'
-    if 'exp_date' in settings.keys():
-        exp_date = settings['exp_date']
-        try:
-            years, month, day = exp_date.split('-')
-            comp = date(int(years), int(month), int(day))
-            if comp<today:
-                exp_date = 'Expired'
-                await save_group_settings(grpid, 'plan_name', 'Expired')
-                await save_group_settings(grpid, 'sub_date', 'Expired')
-                await save_group_settings(grpid, 'exp_date', 'Expired')
-                async for admin in bot.get_chat_members(chat_id=grpid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                    if not admin.user.is_bot:
-                        await bot.send_message(
-                            chat_id=admin.user.id,
-                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Owner_contact_rebot</b>",
-                            disable_web_page_preview=True
-                        )
-                    else:
-                        pass
-        except ValueError:
-            exp_date = 'Not Active'
-    else:
-        exp_date = 'Not Active'
-    if 'plan_name' in settings.keys():
-        plan = settings.get('plan_name')
-    else:
-        plan = 'Not Active'
-    if exp_date == 'Not Active' or plan == 'Not Active':
-        return await message.reply_text(f"<b>Hey {message.from_user.mention}, This bot is free to use you need to take access before connecting your shortlink . For life time free access send msg to admin @Owner_contact_rebot!</b>")
     data = message.text
     userid = message.from_user.id
-    user = await bot.get_chat_member(grp_id, userid)
+    user = await bot.get_chat_member(grpid, userid)
     if user.status != enums.ChatMemberStatus.ADMINISTRATOR and user.status != enums.ChatMemberStatus.OWNER and str(userid) not in ADMINS:
-        return await message.reply_text("<b>You dont have access to this command !</b>")
-    try:
-        command, shorlink_url, api = data.split(" ")
-    except ValueError:
-        return await message.reply_text(f"<b>Hey {message.from_user.mention}, Command Incomplete :(\n\nUse proper format !\n\nFormat:\n\n<code>/shortlink mdisk.link b6d97f6s96ds69d69d68d575d</code></b>")
-    reply = await message.reply_text("<b>Please wait...</b>")
-    await save_group_settings(grp_id, 'shortlink', shorlink_url)
-    await save_group_settings(grp_id, 'shortlink_api', api)
-    await reply.edit_text(f"<b>Successfully Added ShortLink API for {title}\n\nCurrent ShortLink Website : <code>{shorlink_url}</code>\nCurrent API : <code>{api}</code>.</b>")
-
-@Client.on_message(filters.command("addplan") & filters.user(ADMINS))
-async def plans(bot, message):
-    tz = pytz.timezone('Asia/Kolkata')
-    today = date.today()
-    try:
-        grpid = message.text.split(" ", 1)[1]
-    except ValueError:
-        return await message.reply_text(f"<b>Hey {message.from_user.mention}, Give me a group id along with the command !\n\nFormat:\n/addplan -1001.....</b>")
-    settings = await get_settings(grpid)
-    if 'sub_date' in settings.keys():
-        sub_date = settings['sub_date']
+        return await message.reply_text("<b>You don't have access to use this command !</b>")
     else:
-        sub_date = 'Not Active'
-    if 'exp_date' in settings.keys():
-        exp_date = settings['exp_date']
-        try:
-            years, month, day = exp_date.split('-')
-            comp = date(int(years), int(month), int(day))
-            if comp<today:
-                exp_date = 'Expired'
-                await save_group_settings(grpid, 'plan_name', 'Expired')
-                await save_group_settings(grpid, 'sub_date', 'Expired')
-                await save_group_settings(grpid, 'exp_date', 'Expired')
-                async for admin in bot.get_chat_members(chat_id=grpid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                    if not admin.user.is_bot:
-                        await bot.send_message(
-                            chat_id=admin.user.id,
-                            text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Anjel_neha</b>",
-                            disable_web_page_preview=True
-                        )
-                    else:
-                        pass
-        except ValueError:
-            exp_date = 'Not Active'
-    else:
-        exp_date = 'Not Active'
-    if 'plan_name' in settings.keys():
-        plan = settings.get('plan_name')
-    else:
-        plan = 'Not Active'
-    btn = [[
-            InlineKeyboardButton("Add 1 Day", callback_data=f"plans#1day#{grpid}")
-        ],[
-            InlineKeyboardButton("Add 3 Days", callback_data=f"plans#3days#{grpid}")
-        ],[
-            InlineKeyboardButton("Add 1 Week", callback_data=f"plans#1week#{grpid}")
-        ],[
-            InlineKeyboardButton("Add 1 Month", callback_data=f"plans#1month#{grpid}")
-        ],[
-            InlineKeyboardButton("Add 3 Months", callback_data=f"plans#3months#{grpid}")
-        ],[
-            InlineKeyboardButton("Add 6 Months", callback_data=f"plans#6months#{grpid}")
-        ],[
-            InlineKeyboardButton("Remove Access", callback_data=f"plans#remove#{grpid}")
-        ],[
-            InlineKeyboardButton("Close", callback_data="close_data")
-    ]]
-    await message.reply_text(
-        text=f"<b>Group ID: <code>{grpid}</code>\nCurrent Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-        reply_markup=InlineKeyboardMarkup(btn)
-    )
-
-@Client.on_message(filters.command("myplan"))
-async def showplan(bot, message):
+        pass
     try:
-        grpid = message.text.split(" ", 1)[1]
+        command, shortlink_url, api = data.split(" ")
     except:
-        return await message.reply_text("<b>Give me a group id along with the command !\n\nFormat:\n/myplan -1001....</b>")
-    settings = await get_settings(grpid)
-    if 'plan_name' in settings.keys():
-        plan = settings.get('plan_name')
-    else:
-        plan = 'Not Active'
-    if 'sub_date' in settings.keys():
-        sub_date = settings.get('sub_date')
-    else:
-        sub_date = 'Not Active'
-    if 'exp_date' in settings.keys():
-        exp_date = settings.get('exp_date')
-    else:
-        exp_date = 'Not Active'
-    await message.reply_text(f"<b>Your Active Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code>\n\nFor Upgrading your plan, Contact @Owner_contact_rebot</b>")
-
-@Client.on_message(filters.command("plans"))
-async def plans_available(bot, message):
-    btn = [[
-        InlineKeyboardButton("Contact Admin", url="t.me/Anjel_neha")
-    ]]
-    PLANS = """
-    <b>For plan details, Contact @Anjel_neha !
-    
-    All plans available at lower rates !
-    
-    <i>- 1 Day free trial
-    - 1 Month paid plan
-    - 3 Months paid plan
-    - 6 Months paid plan</i></b>
-    """
-    await message.reply_text(
-        text=PLANS,
-        reply_markup=InlineKeyboardMarkup(btn)
-    )
+        return await message.reply_text("<b>Command Incomplete :(\n\nGive me a shortlink and api along with the command !\n\nFormat: <code>/shortlink omegalinks.in 95a8195c40d31e0c3b6baa68813fcecb1239f2e9</code></b>")
+    reply = await message.reply_text("<b>Please Wait...</b>")
+    await save_group_settings(grpid, 'shortlink', shortlink_url)
+    await save_group_settings(grpid, 'shortlink_api', api)
+    await save_group_settings(grpid, 'is_shortlink', True)
+    await reply.edit_text(f"<b>Successfully added shortlink API for {title}.\n\nCurrent Shortlink Website: <code>{shortlink_url}</code>\nCurrent API: <code>{api}</code></b>")
