@@ -98,29 +98,13 @@ async def next_page(bot, query):
 
     if not files:
         return
-    tz = pytz.timezone('Asia/Kolkata')
-    today = date.today()
     settings = await get_settings(query.message.chat.id)
-    if 'exp_date' in settings.keys():
-        exp_date = settings.get('exp_date')
+    if 'is_shortlink' in settings.keys():
+        ENABLE_SHORTLINK = settings['is_shortlink']
     else:
-        exp_date = 'Not Active'
-        plan_active = False
-    if exp_date != 'Not Active' and exp_date != 'Expired':
-        years, month, day = exp_date.split('-')
-        comp = date(int(years), int(month), int(day))
-        if comp<today:
-            exp_date = 'Expired'
-            await save_group_settings(query.message.chat.id, 'plan_name', 'Expired')
-            await save_group_settings(query.message.chat.id, 'sub_date', 'Expired')
-            await save_group_settings(query.message.chat.id, 'exp_date', 'Expired')
-            plan_active = False
-        else:
-            plan_active = True
-    else:
-        plan_active = False
-     
-    if plan_active == True:
+        await save_group_settings(query.message.chat.id, 'is_shortlink', False)
+        ENABLE_SHORTLINK = False
+    if ENABLE_SHORTLINK == True:
         if settings['button']:
             btn = [
                 [
@@ -911,40 +895,7 @@ async def auto_filter(client, msg, spoll=False):
     srh_msg = await message.reply_text("<b>Lᴏᴀᴅɪɴɢ Yᴏᴜʀ Rᴇsᴜʟᴛs...🔎</b>")
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
-    settings = await db.get_settings(message.chat.id)
-    if 'exp_date' in settings.keys():
-        exp_date = settings.get('exp_date')
-    else:
-        exp_date = 'Not Active'
-        plan_active = False
-    if 'plan_name' in settings.keys():
-        plan = settings.get('plan_name')
-    else:
-        plan = 'Not Active'
-        plan_active = False
-    if exp_date != 'Not Active' and exp_date != 'Expired':
-        years, month, day = exp_date.split('-')
-        comp = date(int(years), int(month), int(day))
-        if comp<today:
-            exp_date = 'Expired'
-            await save_group_settings(message.chat.id, 'plan_name', 'Expired')
-            await save_group_settings(message.chat.id, 'sub_date', 'Expired')
-            await save_group_settings(message.chat.id, 'exp_date', 'Expired')
-            async for admin in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                if not admin.user.is_bot:
-                    await client.send_message(
-                        chat_id=admin.user.id,
-                        text="<b>ATTENTION !\n\nThis is an important message, Your subscription has been ended and you have no longer access to link shortners. To continue your link shortners, Kindly renew your subscription ! please contact for subscription @Akash5213</b>",
-                        disable_web_page_preview=True
-                    )
-                else:
-                    pass
-            plan_active = False
-        else:
-            plan_active = True
-    else:
-        plan_active = False
-    if plan == 'Expired':
+    
         async for admin in client.get_chat_members(chat_id=message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
             if not admin.user.is_bot:
                 await client.send_message(
