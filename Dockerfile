@@ -6,7 +6,7 @@ COPY requirements.txt /requirements.txt
 
 RUN cd /
 RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /Proton-2
-WORKDIR /Proton-2
+RUN mkdir /shortner
+WORKDIR /shortner
 COPY start.sh /start.sh
 CMD ["/bin/bash", "/start.sh"]
