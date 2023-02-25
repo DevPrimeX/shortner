@@ -467,142 +467,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-            
-    elif query.data.startswith("plans"):
-        ident, plan, grpid = query.data.split("#")
-        userid = query.from_user.id
-        tz = pytz.timezone('Asia/Kolkata')
-        today = date.today()
-        btn = [[
-               InlineKeyboardButton("Add 1 Day", callback_data=f"plans#1day#{grpid}")
-            ],[
-                InlineKeyboardButton("Add 3 Days", callback_data=f"plans#3days#{grpid}")
-            ],[
-               InlineKeyboardButton("Add 1 Week", callback_data=f"plans#1week#{grpid}")
-            ],[
-               InlineKeyboardButton("Add 1 Month", callback_data=f"plans#1month#{grpid}")
-            ],[
-               InlineKeyboardButton("Add 3 Months", callback_data=f"plans#3months#{grpid}")
-            ],[
-               InlineKeyboardButton("Add 6 Months", callback_data=f"plans#6months#{grpid}")
-            ],[
-               InlineKeyboardButton("Remove Access", callback_data=f"plans#remove#{grpid}")
-            ],[
-               InlineKeyboardButton("Close", callback_data="close_data")
-        ]]
-        settings = await get_settings(grpid)
-        if plan == 'remove':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            await save_group_settings(grpid, 'sub_date', 'Not Active')
-            await save_group_settings(grpid, 'exp_date', 'Not Active')
-            await save_group_settings(grpid, 'plan_name', 'Not Active')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully removed access !", show_alert=True)
-        elif plan == '1day':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + timedelta(days=1))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'plan_name', '1 Day Free Trial')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 1 Day !", show_alert=True)
-        elif plan == '3days':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + timedelta(days=3))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'plan_name', '3 Days Free Trial')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 3 Days !", show_alert=True)
-        elif plan == '1week':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + timedelta(days=7))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'plan_name', '1 Week Free Trial')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 1 Week !", show_alert=True)
-        elif plan == '1month':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + relativedelta(months=1))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'plan_name', '1 Month [Silver Plan]')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 1 Month !", show_alert=True)
-        elif plan == '3months':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + relativedelta(months=3))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'plan_name', '3 Months [Gold Plan]')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 3 Months !", show_alert=True)
-        elif plan == '6months':
-            if userid not in ADMINS:
-                await query.answer("Hey, You don't have access to use this button!", show_alert=True)
-            exp_date = str(today + relativedelta(months=6))
-            await save_group_settings(grpid, 'exp_date', str(exp_date))
-            await save_group_settings(grpid, 'sub_date', str(today))
-            await save_group_settings(grpid, 'plan_name', '6 Months [Platinum Plan]')
-            settings = await get_settings(grpid)
-            sub_date = settings.get('sub_date')
-            exp_date = settings.get('exp_date')
-            plan = settings.get('plan_name')
-            await query.message.edit_text(
-                text=f"<b>Group ID: <code>{grpid}</code>\nActive Plan: <code>{plan}</code>\nSubscription Date: <code>{sub_date}</code>\nExpiry Date: <code>{exp_date}</code></b>",
-                reply_markup=InlineKeyboardMarkup(btn)
-            )
-            await query.answer("Successfully extended 6 Months !", show_alert=True)
-    
     
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
@@ -862,6 +726,12 @@ Wednesday S01E01"""
                     InlineKeyboardButton('𝐖𝐄𝐋𝐂𝐎𝐌𝐄', callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}'),
                     InlineKeyboardButton('✅ 𝐘𝐄𝐒' if settings["welcome"] else '❌ 𝐍𝐎',
                                          callback_data=f'setgs#welcome#{settings["welcome"]}#{str(grp_id)}')
+                ]
+                [
+                    InlineKeyboardButton('ShortLink',
+                                         callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{str(grp_id)}'),
+                    InlineKeyboardButton('✔ Oɴ' if settings["is_shortlink"] else '✘ Oғғ',
+                                         callback_data=f'setgs#is_shortlink#{settings["is_shortlink"]}#{str(grp_id)}')
                 ]
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
