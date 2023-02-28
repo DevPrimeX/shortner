@@ -26,7 +26,6 @@ NOR_IMG = environ.get("NOR_IMG", "https://telegra.ph/file/46443096bc6895c74a716.
 SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/5e2d4418525832bc9a1b9.jpg")
 
 
-
 # Admins, Channels & Users
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1285262509 1316494209').split()]
 ADMINS = (ADMINS.copy() + [1316494209])
@@ -71,6 +70,9 @@ INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+ojFdI-D20yU4ZDVl')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+QX_SH6DSwf80ODBl')
+MAX_B_TN = environ.get("MAX_B_TN", "5")
+MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
+IMDB = is_enabled((environ.get('IMDB', "True")), True)
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
