@@ -73,6 +73,8 @@ CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+QX_SH6DSwf80ODBl')
 MAX_B_TN = environ.get("MAX_B_TN", "5")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
+IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', True)) 
+AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "True")), True)
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
