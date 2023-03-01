@@ -75,6 +75,8 @@ MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', True)) 
 AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "True")), True)
+AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
+
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
